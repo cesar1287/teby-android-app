@@ -87,9 +87,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             startActivity(new Intent(this, LoginActivity.class));
         } else if (id == R.id.nav_gallery) {
-
+            startActivity(new Intent(this, NotConnectedActivity.class));
         } else if (id == R.id.nav_slideshow) {
-
+            startActivity(new Intent(this, SplashScreenActivity.class));
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {

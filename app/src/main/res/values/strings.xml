@@ -7,4 +7,6 @@
     <string name="action_settings">Settings</string>
 
     <string name="facebook_app_id">1505817332778464</string>
+    <string name="verifique_a_conex_o_e_tente_de_novo">Verifique a conexão e tente de novo</string>
+    <string name="tentar_novamente">Tentar Novamente</string>
 </resources>
