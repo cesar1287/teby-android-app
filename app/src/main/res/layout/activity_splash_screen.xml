@@ -14,11 +14,12 @@
         android:id="@+id/textTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TEBY - The End by You"
+        android:text="@string/teby_the_end_by_you"
         android:textAppearance="?android:textAppearanceLarge"
         android:layout_centerHorizontal="true"/>
 
     <ImageView
+        android:contentDescription="@string/logo_projeto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/teby"
