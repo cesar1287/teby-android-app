@@ -1,5 +1,6 @@
 package com.havona.www.teby.view;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -38,9 +39,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(getApplication());
-        setContentView(R.layout.activity_login);
-
-        getSupportActionBar().hide();
 
         // [START initialize_auth]
         // Initialize Firebase Auth
@@ -55,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    startMainActivity();
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -62,6 +61,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
         // [END auth_state_listener]
+
+        setContentView(R.layout.activity_login);
+
+        getSupportActionBar().hide();
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions("email");
@@ -115,8 +118,11 @@ public class LoginActivity extends AppCompatActivity {
     // [START auth_with_facebook]
     private void handleFacebookAccessToken(AccessToken token) {
         Log.d(TAG, "handleFacebookAccessToken:" + token);
+
+        final ProgressDialog progressDialog = new ProgressDialog(this);
         // [START_EXCLUDE silent]
-        //showProgressDialog();
+        progressDialog.setMessage("Processando dados...");
+        progressDialog.show();
         // [END_EXCLUDE]
 
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
@@ -131,15 +137,20 @@ public class LoginActivity extends AppCompatActivity {
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithCredential", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginActivity.this, "Falha no login, por favor tente novamente",
                                     Toast.LENGTH_SHORT).show();
                         }
-
                         // [START_EXCLUDE]
-                        //hideProgressDialog();
+                        progressDialog.dismiss();
                         // [END_EXCLUDE]
                     }
                 });
     }
     // [END auth_with_facebook]
+
+    public void startMainActivity(){
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        finish();
+    }
 }
+

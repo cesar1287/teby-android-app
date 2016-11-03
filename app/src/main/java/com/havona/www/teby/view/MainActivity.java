@@ -1,10 +1,15 @@
 package com.havona.www.teby.view;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,16 +19,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.havona.www.teby.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(getApplication());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -42,8 +62,10 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        initUser();
     }
 
     @Override
@@ -53,6 +75,36 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+        }
+    }
+
+    private void initUser(){
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // User is signed in
+            //get instance header view
+            View hView =  navigationView.getHeaderView(0);
+            //set profile pic on header
+            final ImageView nav_image = (ImageView)hView.findViewById(R.id.imageView);
+            Glide.with(this).load(user.getPhotoUrl()).asBitmap().into(new BitmapImageViewTarget(nav_image) {
+                @Override
+                protected void setResource(Bitmap resource) {
+                    RoundedBitmapDrawable circularBitmapDrawable =
+                            RoundedBitmapDrawableFactory.create(getResources(), resource);
+                    circularBitmapDrawable.setCircular(true);
+                    nav_image.setImageDrawable(circularBitmapDrawable);
+                }
+            });
+            //set name on header
+            TextView nav_nome = (TextView)hView.findViewById(R.id.header_name);
+            nav_nome.setText(user.getDisplayName());
+            //set email on header
+            TextView nav_email = (TextView)hView.findViewById(R.id.header_email);
+            nav_email.setText(user.getEmail());
+        } else {
+            // No user is signed in
+            Toast.makeText(this, "Erro ao carregar dados do usuário, por favor, reinicie o aplicativo e tente novamente", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -85,17 +137,40 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            startActivity(new Intent(this, LoginActivity.class));
+
         } else if (id == R.id.nav_gallery) {
-            startActivity(new Intent(this, NotConnectedActivity.class));
+
         } else if (id == R.id.nav_slideshow) {
-            startActivity(new Intent(this, SplashScreenActivity.class));
+
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
+            builder.setMessage(R.string.message_logout)
+                    .setPositiveButton(R.string.yes_logout, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Toast.makeText(MainActivity.this, "Saindo...", Toast.LENGTH_SHORT).show();
+                            Thread mThread = new Thread(){
+                                @Override
+                                public void run() {
+                                    FirebaseAuth.getInstance().signOut();
+                                    LoginManager.getInstance().logOut();
+                                    startActivity(new Intent(MainActivity.this , LoginActivity.class));
+                                    finish();
+                                }
+                            };
+                            mThread.start();
+                        }
+                    })
+                    .setNegativeButton(R.string.no_logout, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+            builder.show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

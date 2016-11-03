@@ -25,6 +25,6 @@
         android:layout_below="@+id/textTenteNovamente"
         android:text="@string/tentar_novamente"
         android:layout_centerHorizontal="true"
-        />
+        android:onClick="checkConnectivity"/>
 
 </RelativeLayout>

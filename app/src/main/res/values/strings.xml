@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Teby</string>
+    <string name="app_name">TEbY</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -9,6 +9,10 @@
     <string name="facebook_app_id">1505817332778464</string>
     <string name="verifique_a_conex_o_e_tente_de_novo">Verifique a conexão e tente de novo</string>
     <string name="tentar_novamente">Tentar Novamente</string>
-    <string name="teby_the_end_by_you">TEBY - The End by You</string>
+    <string name="teby_the_end_by_you">TEbY - The End by You</string>
     <string name="logo_projeto">Logo projeto</string>
+
+    <string name="message_logout">Tem certeza que deseja sair?</string>
+    <string name="yes_logout">Sim</string>
+    <string name="no_logout">Não</string>
 </resources>
