@@ -41,7 +41,8 @@
         <activity android:name=".view.NeedBeCharacterActivity" />
         <activity android:name=".view.IntrigueCharacterActivity" />
         <activity android:name=".view.HimselfCharacterActivity" />
-        <activity android:name=".view.SunCharacterActivity"></activity>
+        <activity android:name=".view.SunCharacterActivity" />
+        <activity android:name=".view.PresentationActivity"></activity>
     </application>
 
 </manifest>
