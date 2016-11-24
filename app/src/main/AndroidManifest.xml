@@ -18,17 +18,14 @@
         <activity
             android:name=".view.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar.Main"/>
-
+            android:theme="@style/AppTheme.NoActionBar.Main" />
         <activity android:name=".view.LoginActivity" />
-
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             tools:replace="android:theme" />
-
         <activity android:name=".view.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,8 +33,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".view.NotConnectedActivity"/>
+        <activity android:name=".view.NotConnectedActivity" />
+        <activity android:name=".view.ChooseCharacterActivity" />
+        <activity android:name=".view.ColorCharacterActivity" />
+        <activity android:name=".view.IconCharacterActivity" />
+        <activity android:name=".view.CharacteristicCharacterActivity" />
+        <activity android:name=".view.NeedBeCharacterActivity" />
+        <activity android:name=".view.IntrigueCharacterActivity" />
+        <activity android:name=".view.HimselfCharacterActivity" />
+        <activity android:name=".view.SunCharacterActivity"></activity>
     </application>
 
 </manifest>
