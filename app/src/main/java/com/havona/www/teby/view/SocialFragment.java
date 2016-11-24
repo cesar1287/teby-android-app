@@ -7,9 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by Ratan on 7/29/2015.
- */
+import com.havona.www.teby.R;
+
+
 public class SocialFragment extends Fragment {
 
     @Nullable

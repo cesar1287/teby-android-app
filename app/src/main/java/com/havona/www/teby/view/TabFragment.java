@@ -11,9 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by Ratan on 7/27/2015.
- */
+import com.havona.www.teby.R;
+
 public class TabFragment extends Fragment {
 
     public static TabLayout tabLayout;
@@ -89,11 +88,11 @@ public class TabFragment extends Fragment {
 
             switch (position){
                 case 0 :
-                    return "Primary";
+                    return "Perfil";
                 case 1 :
-                    return "Social";
+                    return "Personagens";
                 case 2 :
-                    return "Updates";
+                    return "Chat";
             }
                 return null;
         }
