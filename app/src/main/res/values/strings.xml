@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TEbY</string>
+    <string name="app_name">Havona</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -9,7 +9,7 @@
     <string name="facebook_app_id">1505817332778464</string>
     <string name="verifique_a_conex_o_e_tente_de_novo">Verifique a conexão e tente de novo</string>
     <string name="tentar_novamente">Tentar Novamente</string>
-    <string name="teby_the_end_by_you">TEbY - The End by You</string>
+    <string name="teby_the_end_by_you">HAVONA</string>
     <string name="logo_projeto">Logo projeto</string>
 
     <string name="message_logout">Tem certeza que deseja sair?</string>
