@@ -10,4 +10,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.havona.www.teby.view.PresentationActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Olá, para uma experiência completa do aplicativo e suas funcionalidades, precisamos que responda algumas perguntas referente aos personagens do livro. Vamos continuar?"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:gravity="center"
+        android:layout_above="@+id/buttonContinuar"/>
+
+    <Button
+        android:id="@id/buttonContinuar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="continuar"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="15dp"/>
+
 </RelativeLayout>

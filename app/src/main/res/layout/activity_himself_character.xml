@@ -10,4 +10,81 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.havona.www.teby.view.HimselfCharacterActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="O personagem se acha:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:id="@+id/textView2" />
+
+    <CheckBox
+        android:text="Versátil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/checkBox" />
+    <CheckBox
+        android:text="Brilhante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/checkBox1" />
+    <CheckBox
+        android:text="Interessante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/checkBox2" />
+    <CheckBox
+        android:text="Amigável"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/checkBox3" />
+    <CheckBox
+        android:text="Responsável"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/checkBox4" />
+    <CheckBox
+        android:text="Sociável"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/checkBox5" />
+    <CheckBox
+        android:text="Autoconfiante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/checkBox6" />
+    <Button
+        android:id="@+id/buttonContinuarChooseCarac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Escolher"
+        android:layout_alignParentBottom="true"/>
+
 </RelativeLayout>
